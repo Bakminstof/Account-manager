@@ -1,0 +1,106 @@
+.account-create__content {
+    @include flex();
+
+    flex-direction: column;
+
+    input {
+        margin: 0 0 5px 0;
+
+        outline: 1px solid #5a5a5a9a;
+
+        &::placeholder {
+            padding: 0 5px;
+            font-size: percentage_change($base_fz, -45);
+        }
+    }
+
+    .account-details__content {
+        @include flex();
+    
+        flex-direction: row;
+    
+        input {
+            max-width: fit-content;
+            padding: 3px 3px 0 3px;
+    
+            background: none;
+    
+            font-size: $account_items_fz;
+    
+            &:focus {
+                transition: 0.4s;
+                box-shadow: 1px 1px 2px #000, inset 0px 0px 2px #000;
+            }
+        }
+    }
+    
+    .account-detail {
+        margin: 0 8px 0 0;
+    
+        &:last-child {
+            margin: 0;
+        }
+    }
+    
+    .account-details__title {
+        @include flex();
+    
+        position: relative;
+    
+        justify-content: stretch;
+        align-items: center;
+    
+        .create-account__details-title {
+            margin: 0 4px 0 0;
+            font-size: percentage_change($base_fz, -30);
+        }
+    
+    }
+}
+
+
+
+.account-create__button {
+    width: 100%;
+    padding: 4px;
+
+    flex: 0 1 auto;
+    box-shadow: 1px 1px 1px 1px #000;
+
+    background-color: #a50d0da1;
+    transition: 0.1s;
+
+    &:hover {
+        background-color: #790a0aa1;
+        transition: 0.1s;
+    }
+}
+
+.account-details__add-row-button {
+    margin: 0 0 10px 0;
+
+    $button-side: 1.2rem;
+
+    @include svg-button(
+        $button-side,
+        $button-side,
+        "/static/media/icons/plus.svg",
+        false
+    );
+}
+
+.account-created {
+    position: fixed;
+
+    top: -3.2rem;
+
+    left: 50%;
+    transform: translate(-50%, 0);
+
+    width: 100%;
+
+    color: #008106dc;
+
+    text-align: center;
+    text-shadow: 1px 1px 1px #081411a2;
+}

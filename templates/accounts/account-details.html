@@ -1,0 +1,20 @@
+<div class="account-details__content">
+    <div class="account-detail">
+        <input
+            class="account-detail__name"
+            type="text"
+            value="{% if field_name %}{{ field_name }}{% endif %}"
+            placeholder="Название (почта, логин, пароль т.д.)"
+            readonly
+        />
+    </div>
+    <div class="account-detail">
+        <input
+            class="account-detail__value"
+            type="text"
+            value="{% if field_value %}{{ field_value }}{% endif %}"
+            placeholder="Значение (my@imail.ru, MyLogin, password т.д.)"
+            readonly
+        />
+    </div>
+</div>

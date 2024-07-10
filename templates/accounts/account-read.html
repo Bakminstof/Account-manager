@@ -1,0 +1,32 @@
+{% extends "accounts/account-base.html" %} {% block account_details %}
+
+<div class="account-details__container">
+    {% for field_name, field_value in account.data.items() %} {% include
+    "accounts/account-details.html" %} {% endfor %}
+    <button
+        class="account-details__add-row-button details-edit hidden"
+    ></button>
+</div>
+{% endblock account_details %} {% block account_buttons %}
+<button class="btn account-buttons__button change-button hidden">
+    Изменить
+</button>
+<button
+    class="account-buttons__button export-button txt-export-button hidden"
+></button>
+<button
+    class="account-buttons__button export-button json-export-button hidden"
+></button>
+<!-- <button
+    class="account-buttons__button export-button csv-export-button hidden"
+></button> -->
+<button class="btn account-buttons__button rollback-button hidden none">
+    Отмена
+</button>
+<button class="btn account-buttons__button save-button hidden none">
+    Сохранить
+</button>
+<button class="btn account-buttons__button delete-button hidden">
+    Удалить
+</button>
+{% endblock account_buttons %}

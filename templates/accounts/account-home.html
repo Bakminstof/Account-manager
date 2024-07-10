@@ -1,0 +1,10 @@
+{% extends "main.html" %} {% block content %} {% if SEARCH_RESULT %} {% include
+"accounts/search-result.html" %} {% endif %} {% if request.user %} {% include
+"accounts/account-templates.html" %}
+<script defer type="module" src="/static/js/account/edit.js"></script>
+<script defer type="module" src="/static/js/account/export.js"></script>
+<script defer type="module" src="/static/js/account/upload.js"></script>
+{% else %} {% endif %}
+<script defer type="module" src="/static/js/account/acc.js"></script>
+<script defer type="module" src="/static/js/account/search.js"></script>
+{% endblock content %}

@@ -1,0 +1,129 @@
+$base_fz: 2.5rem;
+$base_color_1: #9cffc8;
+
+// Validation
+$validation_error_label_font_size: percentage_change($base_fz, -40);
+$validation_error_label_max_height: percentage_change(
+    $validation_error_label_font_size,
+    +5
+);
+
+$validation_error_label_mr_1200_max_height: percentage_change(
+    $validation_error_label_max_height,
+    -25
+);
+$validation_error_label_mr_992_max_height: percentage_change(
+    $validation_error_label_max_height,
+    -30
+);
+$validation_error_label_mr_767_max_height: percentage_change(
+    $validation_error_label_max_height,
+    -35
+);
+
+.validation-error-label {
+    padding: 0.2rem;
+
+    flex: 1 1 auto;
+
+    font-size: $validation_error_label_font_size;
+
+    max-height: $validation_error_label_max_height;
+    max-width: 100%;
+
+    overflow: hidden;
+
+    color: #9b0000bb;
+}
+
+.validation-error {
+    box-shadow: 0 0 1px 1px inset #9b000030;
+}
+
+// Visibility
+.none {
+    display: none !important;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.hidden-soft {
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+}
+
+@mixin hidden-soft-visible(
+    $clip: auto,
+    $height: auto,
+    $width: auto,
+    $margin: auto
+) {
+    clip: $clip;
+    height: $height;
+    width: $width;
+    margin: $margin;
+}
+
+@mixin hidden-soft-hidden {
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+}
+//
+.lock {
+    overflow: hidden !important;
+}
+
+.not-found {
+    @include flex();
+
+    align-items: center;
+    justify-content: center;
+
+    & h1 {
+        font-family: "Ustroke";
+        font-size: 10rem;
+    }
+}
+
+.btn {
+    --opacity: 1;
+    opacity: var(--opacity);
+
+    &:hover {
+        transition: 0.3s;
+        --opacity: 0.65;
+    }
+
+    &:active {
+        transition: 0.3s;
+        --opacity: 0.85;
+    }
+}
+
+// Media requests
+@mixin validation_error_label__media_rq_max_width_1200() {
+    .validation-error-label {
+        font-size: percentage_change($validation_error_label_font_size, -25);
+        max-height: $validation_error_label_mr_1200_max_height;
+    }
+}
+
+@mixin validation_error_label__media_rq_max_width_992() {
+    .validation-error-label {
+        font-size: percentage_change($validation_error_label_font_size, -30);
+        max-height: $validation_error_label_mr_992_max_height;
+    }
+}
+
+@mixin validation_error_label__media_rq_max_width_767() {
+    .validation-error-label {
+        font-size: percentage_change($validation_error_label_font_size, -35);
+        max-height: $validation_error_label_mr_767_max_height;
+    }
+}

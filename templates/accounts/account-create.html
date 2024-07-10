@@ -1,0 +1,17 @@
+{% extends "accounts/account-base.html" %} {% block account_pre_content %}
+<button class="account-create__close" type="button"></button>
+<span class="account-create__title">Создание аккаунта</span>
+{% endblock account_pre_content %} {% block account_details %}
+<div class="account-details__title">
+    <span class="account-details__label">Атрибуты</span>
+    <button class="account-details__add-row-button"></button>
+</div>
+
+<div class="account-details__container">
+    {% include "accounts/account-details.html" %}
+</div>
+{% endblock account_details %} {% block account_buttons %}
+<button class="account-buttons__button account-create__button">
+    Создать аккунт
+</button>
+{% endblock account_buttons %}

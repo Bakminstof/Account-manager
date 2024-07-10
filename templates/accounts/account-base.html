@@ -1,0 +1,30 @@
+<div class="account">
+    <div
+        class="account__container"
+        id="{% if account %}{{ account.id }}{% endif %}"
+    >
+        <div class="account__content">
+            {% block account_pre_content %} {% endblock account_pre_content %}
+            {% block account_content %}
+            <div class="account-title">
+                <div class="account-title__container">
+                    <input
+                        class="account-title__name"
+                        type="text"
+                        value="{% if account %}{{ account.name }}{% endif %}"
+                        placeholder="Нaзвание аккаунта"
+                        readonly
+                    />
+                </div>
+            </div>
+
+            <div class="account-details">
+                {% block account_details %} {% endblock account_details %}
+            </div>
+            {% endblock account_content %}
+            <div class="account-buttons">
+                {% block account_buttons %} {% endblock account_buttons %}
+            </div>
+        </div>
+    </div>
+</div>

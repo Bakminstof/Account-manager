@@ -1,0 +1,91 @@
+<div class="header__container">
+    <div class="header__title">
+        <h1>{{ APP_NAME }}</h1>
+    </div>
+    {% if request.user %}
+    <div class="account-add">
+        <a href="#add-account" class="account-add__lnk">
+            <p class="account-add__lnk-title">Добавить аккаунт</p>
+        </a>
+    </div>
+    {% endif %}
+    <div class="search">
+        <div class="search__container">
+            <form class="search__item" action="{{ SEARCH_URL }}" method="post">
+                <input
+                    name="search"
+                    class="search-input"
+                    type="text"
+                    value=""
+                />
+                <button class="search-button" type="submit"></button>
+            </form>
+        </div>
+    </div>
+    {% if request.user %}
+
+    <nav class="nav">
+        <!-- <div class="menu-burger"><span></span></div> -->
+
+        <ul class="menu">
+            <li class="menu-item">
+                <div class="search-extend">
+                    <form action="{{ SEARCH_URL }}" method="post">
+                        <input type="text" name="search" value="*" readonly />
+                        <button type="submit">Мои аккаунты</button>
+                    </form>
+                </div>
+            </li>
+            <li class="menu-item">
+                <label class="upload-title" for="file-upload">Загрузить</label>
+                <form
+                    class="upload"
+                    enctype="multipart/form-data"
+                    action="/accounts/upload"
+                    method="post"
+                >
+                    <input
+                        type="file"
+                        class="file-upload"
+                        id="file-upload"
+                        name="file"
+                    />
+                </form>
+            </li>
+            {% if accounts %}
+            <li class="menu-item">
+                <button class="export">Выгрузить</button>
+                <ul class="submenu">
+                    <li class="menu-item">
+                        <button class="txt-export-button">TXT</button>
+                    </li>
+                    <li class="menu-item">
+                        <button class="json-export-button">JSON</button>
+                    </li>
+                    <!-- <li class="menu-item">
+                        <button class="csv-export-button">CSV</button>
+                    </li> -->
+                </ul>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
+
+    <div class="auth">
+        <div class="auth__container">
+            {% if request.user %}
+            <h3 class="profile">{{ request.user.username }}</h3>
+
+            <form action="{{ LOGOUT_URL }}" method="post">
+                <button class="auth__button" type="submit">Выход</button>
+            </form>
+            {% else %}
+            <form action="{{ LOGIN_URL }}" method="get">
+                <button class="auth__button" type="submit">Вход</button>
+            </form>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<script defer type="module" src="/static/js/account/search.js"></script>

@@ -1,0 +1,81 @@
+$account_items_fz: percentage_change($base_fz, -35);
+
+.account {
+    margin: 0 10px 10px 0;
+    min-width: 310px;
+    max-width: fit-content;
+
+    flex: 1 1 auto;
+
+    box-shadow: 1px 1px 2px 2px #35252531;
+}
+
+.account__container {
+    @include flex();
+
+    margin: 0 0 1rem 0;
+    padding: 10px;
+
+    height: 100%;
+
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.account__content {
+    @include flex();
+
+    flex-direction: column;
+
+    height: 100%;
+}
+
+.account-details {
+    flex: 1 0 auto;
+}
+
+.account-title__container {
+    padding: 4px;
+}
+
+.account-title__container,
+.account-detail {
+    @include flex();
+
+    position: relative;
+
+    flex-direction: column;
+    justify-content: stretch;
+}
+
+.account-title__name {
+    display: inline-block;
+
+    font-size: percentage_change($account_items_fz, +10);
+}
+
+.account-details__container {
+    position: relative;
+    
+    padding:  4px 4px 8px 4px;
+
+    outline: 1px solid #35252531;
+}
+
+.account-details__content {
+    @include flex();
+
+    position: relative;
+
+    flex-direction: column;
+}
+
+.account-detail {
+    margin: 0 0 8px 0;
+
+    font-size: $account_items_fz;
+}
+
+.account-detail__value {
+    background-color: #1a1a1a0c;
+}

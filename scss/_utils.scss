@@ -1,0 +1,40 @@
+@use "sass:math";
+
+%show-border {
+    border: 1px solid #9c0000;
+}
+
+@function percentage_change($current, $proc) {
+    @return $current + (math.div($current, 100) * $proc);
+}
+
+@mixin flex() {
+    display: flex;
+}
+
+@mixin svg-button($height, $width, $background-image-url, $absolute: true) {
+    @if $absolute {
+        position: absolute;
+    }
+
+    height: $height;
+    width: $width;
+
+    background-image: url($background-image-url);
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: local;
+    background-size: contain;
+}
+
+@function get_validation_error_container_min_height(
+    $item_max_height,
+    $item_margin_bottom,
+    $error_label_max_height,
+    $offset,
+    $items_count: 2
+) {
+    @return ($item_max_height + $item_margin_bottom) * $items_count +
+        $error_label_max_height + $offset;
+}

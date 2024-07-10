@@ -1,0 +1,84 @@
+{% extends "base.html" %} {% block body__container %}
+<main class="main-auth">
+    <form
+        id="register-form"
+        class="auth-form"
+        action="{{ register_url }}"
+        method="post"
+    >
+        <div class="auth-form__container">
+            <div class="auth-item__container">
+                <span class="auth-item__label auth-item__element">Логин</span>
+                <input
+                    id="username"
+                    type="text"
+                    name="username"
+                    class="username auth-item__element"
+                    autocomplete="off"
+                />
+                <span class="validation-error-label auth-item__element"></span>
+            </div>
+            <div class="auth-item__container">
+                <span class="auth-item__label auth-item__element">Почта</span>
+                <input
+                    id="email"
+                    type="text"
+                    name="email"
+                    class="email auth-item__element"
+                    autocomplete="off"
+                />
+                <span class="validation-error-label auth-item__element"></span>
+            </div>
+            <div class="auth-item__container">
+                <div class="password-info">
+                    <span class="auth-item__label auth-item__element"
+                        >Пароль</span
+                    >
+                    &nbsp
+                    <div class="password-info__icon">
+                        <div class="password-info__content">
+                            Требования к паролю: <br />
+                            - минимальная длина: {{ PASSWORD_MIN_LENGTH }}<br />
+                            - маленькие буквы: {{
+                            PASSWORD_LOWERCASE_LETTERS_MIN_COUNT }}<br />
+                            - большие буквы: {{
+                            PASSWORD_UPPERCASE_LETTERS_MIN_COUNT }}<br />
+                            - цифры: {{ PASSWORD_DIGITS_MIN_COUNT }}<br />
+                            - спецсимволы: {{ PASSWORD_SPEC_SYMBOLS_MIN_COUNT }}
+                        </div>
+                    </div>
+                </div>
+
+                <input
+                    id="password"
+                    type="password"
+                    name="password"
+                    class="password auth-item__element"
+                    autocomplete="off"
+                />
+                <span class="validation-error-label auth-item__element"></span>
+            </div>
+            <div class="auth-item__container">
+                <span class="auth-item__label auth-item__element">
+                    Повторите пароль
+                </span>
+                <input
+                    id="password_check"
+                    type="password"
+                    name="password_check"
+                    class="password-check auth-item__element"
+                    autocomplete="off"
+                />
+                <span class="validation-error-label auth-item__element"></span>
+            </div>
+            <div class="auth__button-container">
+                <button class="btn auth__button-element" type="submit">
+                    Зарегистрироваться
+                </button>
+            </div>
+        </div>
+    </form>
+</main>
+
+<script defer type="module" src="/static/js/auth/reg.js"></script>
+{% endblock %}

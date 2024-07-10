@@ -1,0 +1,108 @@
+@import "_reset";
+
+@import "_utils";
+@import "_base";
+
+@import "_fonts";
+
+@import "_header";
+@import "_fotter";
+
+@import "_auth";
+
+@import "_search_widget";
+@import "_account";
+
+@import "_popup";
+
+$button_shadow_color: #ffffffab;
+
+* {
+    font-family: "Greca Regular";
+    font-size: $base_fz;
+
+    color: #1b1b1be8;
+
+    // @extend %show-border;
+}
+
+body {
+    background-color: #ffffff;
+
+    height: 100%;
+
+    .body__container {
+        @include flex();
+
+        flex-direction: column;
+
+        height: 100%;
+        width: 100%;
+
+        flex-direction: column;
+        justify-content: space-between;
+    }
+}
+
+main {
+    flex: 1 1 auto;
+
+    overflow: auto;
+    overflow-x: hidden;
+
+    & .main__container {
+        @include flex();
+
+        padding: 0 1.2rem;
+        height: 100%;
+
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 75em) {
+    * {
+        font-size: percentage_change($base_fz, -25);
+    }
+    .auth__profile {
+        font-size: percentage_change($auth_items_fz, -25);
+    }
+
+    @include account__media_rq_max_width_1200();
+    @include validation_error_label__media_rq_max_width_1200();
+    @include header__media_rq_max_width_1200();
+    @include footer__media_rq_max_width_1200();
+    @include auth_form__media_rq_max_width_1200();
+}
+
+@media (max-width: 62em) {
+    * {
+        font-size: percentage_change($base_fz, -40);
+    }
+
+    .auth__profile {
+        font-size: percentage_change($auth_items_fz, -25);
+    }
+
+    @include account__media_rq_max_width_992();
+    @include validation_error_label__media_rq_max_width_992();
+    @include header__media_rq_max_width_992();
+    @include footer__media_rq_max_width_992();
+    @include auth_form__media_rq_max_width_992();
+}
+
+@media (max-width: 47.9375em) {
+    * {
+        font-size: percentage_change($base_fz, -50);
+    }
+
+    .auth__profile {
+        font-size: percentage_change($auth_items_fz, -35);
+    }
+
+    @include account__media_rq_max_width_767();
+    @include validation_error_label__media_rq_max_width_767();
+    @include header__media_rq_max_width_767();
+    @include footer__media_rq_max_width_767();
+    @include auth_form__media_rq_max_width_767();
+}

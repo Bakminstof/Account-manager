@@ -1,0 +1,46 @@
+{% extends "base.html" %} {% block body__container %}
+<main class="main-auth">
+    <form
+        id="auth-form"
+        class="auth-form"
+        action="{{ LOGIN_URL }}"
+        method="post"
+    >
+        <div class="auth-form__container">
+            <div class="auth-item__container">
+                <span class="auth-item__label auth-item__element">Логин</span>
+                <input
+                    id="username"
+                    type="text"
+                    name="username"
+                    class="username auth-item__element"
+                />
+            </div>
+
+            <div class="auth-item__container">
+                <span class="auth-item__label auth-item__element">Пароль</span>
+                <input
+                    id="password"
+                    type="password"
+                    name="password"
+                    class="password auth-item__element"
+                />
+            </div>
+            <div class="auth__button-container">
+                <button type="submit" class="btn auth__button-element">
+                    Войти
+                </button>
+
+                <a
+                    class="auth__button-element reg-link"
+                    href="{{ REGISTER_URL }}"
+                >
+                    Регистрация
+                </a>
+            </div>
+        </div>
+    </form>
+</main>
+
+<script defer type="module" src="/static/js/auth/auth.js"></script>
+{% endblock %}

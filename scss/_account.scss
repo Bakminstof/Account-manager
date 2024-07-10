@@ -1,0 +1,62 @@
+@import "accounts/_account-base";
+@import "accounts/_account-create";
+@import "accounts/_account-edit";
+
+$acc_item_max_height: 1.85rem;
+$acc_item_margin_bottom: 0.4rem;
+$offset: 1rem;
+
+$account_validation_containers_slector: "      \
+    .account-create .account-title__container, \
+    .account-create .account-detail,           \
+    ";
+
+#{$account_validation_containers_slector} {
+    min-height: get_vlidation_error_container_min_height(
+        $acc_item_max_height,
+        $acc_item_margin_bottom,
+        $validation_error_label_max_height,
+        $offset,
+        1
+    );
+
+    input {
+        margin: 0 0 $acc_item_margin_bottom 0;
+    }
+}
+
+@mixin account__media_rq_max_width_1200() {
+    #{$account_validation_containers_slector} {
+        min-height: get_vlidation_error_container_min_height(
+            $acc_item_max_height,
+            $acc_item_margin_bottom,
+            $validation_error_label_mr_1200_max_height,
+            $offset,
+            1
+        );
+    }
+}
+
+@mixin account__media_rq_max_width_992() {
+    #{$account_validation_containers_slector} {
+        min-height: get_vlidation_error_container_min_height(
+            $acc_item_max_height,
+            $acc_item_margin_bottom,
+            $validation_error_label_mr_992_max_height,
+            $offset,
+            1
+        );
+    }
+}
+
+@mixin account__media_rq_max_width_767() {
+    #{$account_validation_containers_slector} {
+        min-height: get_vlidation_error_container_min_height(
+            $acc_item_max_height,
+            $acc_item_margin_bottom,
+            $validation_error_label_mr_767_max_height,
+            $offset,
+            1
+        );
+    }
+}

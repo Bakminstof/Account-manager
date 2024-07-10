@@ -165,7 +165,7 @@ cython_debug/
 *.pem
 
 # Database
-*.db
+#*.db
 *.session
 backup.sh
 postgres/data/*

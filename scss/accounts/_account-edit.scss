@@ -1,0 +1,129 @@
+$button_height: 35px;
+$button_width: 35px;
+
+.account {
+    background-color: #e2ffe694;
+    
+    &:hover {
+        .account-buttons__button {
+            visibility: visible;
+        }
+    }
+}
+
+.account-edit {
+    .item-change {
+        background-color: #262e2e23;
+
+        &:focus {
+            transition: 0.4s;
+
+            box-shadow: 1px 1px 2px #000, inset 0px 0px 2px #000;
+        }
+    }
+}
+
+.account-buttons {
+    @include flex();
+
+    flex-wrap: wrap;
+
+    height: $button_height;
+    min-width: 100%;
+
+    font-size: percentage_change($account_items_fz, -15);
+    justify-content: space-between;
+}
+
+
+.account-buttons__button {
+    margin: 0 10px 0 0;
+    padding: 3px;
+
+    box-shadow: 1px 1px 2px #000;
+
+    &:last-child {
+        margin: 0;
+    }
+}
+
+.change-button {
+    background-color: #9b8c002f;
+}
+
+.rollback-button {
+    background-color: #5d009b2f;
+}
+
+.save-button {
+    background-color: #249b002f;
+}
+
+.delete-button {
+    background-color: #9b00002f;
+}
+
+.export-button {
+    box-shadow: none;
+
+    &:hover {
+        transition: 0.3s;
+
+        transform: scale(2) translateY(-20%);
+    }
+}
+
+.txt-export-button {
+    @include svg-button(
+        $button_height,
+        $button_width,
+        "/static/media/icons/txt-label.svg",
+        false
+    );
+}
+.json-export-button {
+    @include svg-button(
+        $button_height,
+        $button_width,
+        "/static/media/icons/json-label.svg",
+        false
+    );
+}
+.csv-export-button {
+    @include svg-button(
+        $button_height,
+        $button_width,
+        "/static/media/icons/csv-label.svg",
+        false
+    );
+}
+
+.remove-row {
+    position: absolute;
+
+    top: -5px;
+    right: -6px;
+
+    @include svg-button(
+        14px,
+        14px,
+        "/static/media/icons/cross.svg",
+        false
+    );
+}
+
+.account-details__add-row-button.details-edit {
+    position: absolute;
+
+    right: -5px;
+    bottom: -10px;
+
+    $button-side: 1.2rem;
+
+    @include svg-button(
+        $button-side,
+        $button-side,
+        "/static/media/icons/plus.svg",
+        false
+    );
+}

@@ -1,0 +1,15 @@
+{% if request.user %} {% if request.user.is_active %} {% if accounts %}
+<div class="search-result">
+    {% for account in accounts %} {% include "accounts/account-read.html" %} {%
+    endfor %}
+</div>
+<script defer type="module" src="/static/js/account/export.js"></script>
+{% else %}
+<div>
+    <p>Ничего не нашлось</p>
+</div>
+{% endif %} {% else %}
+<p>Доступ закрыт</p>
+{% endif %} {% else %}
+<p>Не авторизован</p>
+{% endif %}

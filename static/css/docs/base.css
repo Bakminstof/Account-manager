@@ -1,0 +1,18 @@
+.header {
+  position: fixed;
+  z-index: 1;
+  background: #E0FFFF;
+  opacity: .9;
+}
+
+.header__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.content-container {
+  background: #F0FFF0;
+  opacity: .8;
+}

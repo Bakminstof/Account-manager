@@ -1,0 +1,10 @@
+{% extends "base.html" %} {% block body__container %}
+
+<header class="header lock-padding">{% include "header.html" %}</header>
+
+<main class="main">
+    <div class="main__container">{% block content %}{% endblock %}</div>
+</main>
+
+<footer class="footer lock-padding">{% include "footer.html" %}</footer>
+{% endblock %}

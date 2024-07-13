@@ -166,15 +166,6 @@ class AuthSettings(BaseModel):
     password_digits_min_count: int = 1
     password_spec_symbols_min_count: int = 1
 
-    @field_validator("certs_dir", mode="before")
-    def certs_dir_validator(
-        cls,
-        value: str,
-        info: ValidationInfo,
-        **kwargs,
-    ) -> Path:
-        return get_abs_path(BASE_DIR.parent, value)
-
     @field_validator("public_key", "private_key")
     def certs_validator(
         cls,

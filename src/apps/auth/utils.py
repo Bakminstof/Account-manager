@@ -70,6 +70,6 @@ def decode_jwt(
         payload = decode(jwt=jwt, key=public_key, algorithms=[algorithm])
 
     except PyJWTError:
-        raise {}
+        return {}
 
     return payload

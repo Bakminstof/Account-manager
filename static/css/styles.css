@@ -971,7 +971,6 @@ main .main__container {
   padding: 0 1.2rem;
   height: 100%;
   flex-direction: column;
-  flex: 1 1 auto;
 }
 
 @media (max-width: 75em) {
@@ -1048,4 +1047,4 @@ main .main__container {
   .auth-item__container {
     min-height: 5.32375rem;
   }
-}
+}/*# sourceMappingURL=styles.css.map */

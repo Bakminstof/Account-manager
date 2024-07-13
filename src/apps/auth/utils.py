@@ -1,6 +1,10 @@
 from datetime import UTC, datetime, timedelta
 
-from jwt import ExpiredSignatureError, InvalidSignatureError, decode, encode
+from jwt import (
+    decode,
+    encode,
+    PyJWTError,
+)
 from starlette import status
 from starlette.requests import Request
 from starlette.responses import RedirectResponse
@@ -65,7 +69,7 @@ def decode_jwt(
     try:
         payload = decode(jwt=jwt, key=public_key, algorithms=[algorithm])
 
-    except (InvalidSignatureError, ExpiredSignatureError):
-        return {}
+    except PyJWTError:
+        raise {}
 
     return payload

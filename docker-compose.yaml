@@ -1,0 +1,63 @@
+version: "3.8"
+
+services:
+  app:
+    image: ${APP_IMAGE_TAG}
+    volumes:
+      - ./db:/db
+      - ./certs:/certs
+      - ./src/log/logs:/src/log/logs
+      - ./static:/static
+      - ./temp:/temp
+      - ./templates:/templates
+    environment:
+      - ENV_FILE=/src/env/prod.env
+      - APP_PORT=$APP_PORT
+    command:
+      - "hypercorn"
+      - "main:app"
+      - "--bind"
+      - "0.0.0.0:${APP_PORT}"
+    deploy:
+      replicas: 1
+      update_config:
+        parallelism: 1
+        order: start-first
+        failure_action: rollback
+        delay: 10s
+      rollback_config:
+        parallelism: 0
+        order: stop-first
+      restart_policy:
+        condition: any
+        delay: 5s
+        window: 120s
+
+  nginx:
+    image: ${NGINX_IMAGE_TAG}
+    volumes:
+      - ./certs:/etc/nginx/TLS
+      - ./nginx/config/nginx.conf.template:/etc/nginx/nginx.conf.template
+      - ./static:/static
+    environment:
+      - APP_PORT=$APP_PORT
+      - NGINX_CONTAINER_PORT=$NGINX_CONTAINER_PORT
+      - NGINX_SERVER_PORT=$NGINX_SERVER_PORT
+      - NGINX_SERVER_NAME=$NGINX_SERVER_NAME
+    command: /bin/bash -c "envsubst '$${NGINX_CONTAINER_PORT} $${NGINX_SERVER_PORT} $${NGINX_SERVER_NAME} $${APP_PORT}' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && nginx -g 'daemon off;'"
+    ports:
+      - "${NGINX_CONTAINER_PORT}:${NGINX_SERVER_PORT}"
+    deploy:
+      replicas: 1
+      update_config:
+        parallelism: 1
+        order: start-first
+        failure_action: rollback
+        delay: 10s
+      rollback_config:
+        parallelism: 0
+        order: stop-first
+      restart_policy:
+        condition: any
+        delay: 5s
+        window: 120s

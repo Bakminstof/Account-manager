@@ -13,6 +13,7 @@ from log.settings import LoggingSettings
 
 BASE_DIR = Path(__file__).parent.parent
 ENV_DIR = BASE_DIR / "env"
+CERTS_DIR = BASE_DIR.parent / "certs"
 
 environ.setdefault(
     "ENV_FILE",
@@ -148,8 +149,6 @@ class DBSettings(BaseModel):
 
 
 class AuthSettings(BaseModel):
-    certs_dir: Path | str = "certs"
-
     public_key: Path | str = "auth-jwt-public.pem"
     private_key: Path | str = "auth-jwt-private.pem"
 
@@ -183,7 +182,7 @@ class AuthSettings(BaseModel):
         info: ValidationInfo,
         **kwargs,
     ) -> Path:
-        return get_abs_path(info.data.get("certs_dir"), value)
+        return get_abs_path(CERTS_DIR, value)
 
 
 class Language(StrEnum):
@@ -237,6 +236,18 @@ class Settings(BaseSettings):
         **kwargs,
     ) -> Path:
         return get_abs_path(BASE_DIR.parent, value)
+
+    public_key: Path | str = "public.pem"
+    private_key: Path | str = "private.pem"
+
+    @field_validator("public_key", "private_key")
+    def certs_validator(
+        cls,
+        value: str,
+        info: ValidationInfo,
+        **kwargs,
+    ) -> Path:
+        return get_abs_path(CERTS_DIR, value)
 
     debug: bool = True
 
